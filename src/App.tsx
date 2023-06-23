@@ -10,7 +10,7 @@ const App = () => {
 			}}
 		>
 			<GridItem area={"nav"}>
-				<Navbar></Navbar>
+				<Navbar />
 			</GridItem>
 			<Show above="lg">
 				<GridItem area={"aside"} bg={"gray"}>
