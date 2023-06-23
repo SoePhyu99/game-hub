@@ -28,18 +28,14 @@ const useGames = () => {
         let controller = new AbortController();
         setLoading(true);
         console.log('start fetching...');
-        
 		apiClient
 			.get<FetchGameResponse>("/games", {signal: controller.signal})
 			.then((res) => {
                 setGames(res.data.results);
-                console.log('stop');
-                
             setLoading(false)})
 			.catch((e) => {
                 if(e instanceof CanceledError) return;
                 setError(e.message)});
-                setLoading(false);
         return () => controller.abort();
 	}, []);
 
