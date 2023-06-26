@@ -7,7 +7,11 @@ interface Props {
 
 const Boxes = ({ children }: Props) => {
 	return (
-		<Box borderRadius={10} overflow="hidden" width="100%">
+		<Box
+			borderRadius={10}
+			overflow="hidden"
+			width={{ xl: "250px", lg: "200px" }}
+		>
 			{children}
 		</Box>
 	);
