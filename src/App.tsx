@@ -26,7 +26,7 @@ const App = () => {
 			}}
 			gridTemplateColumns={{
 				base: "1fr",
-				lg: "240px 1fr",
+				lg: "200px 1fr",
 			}}
 		>
 			<GridItem area={"nav"}>
