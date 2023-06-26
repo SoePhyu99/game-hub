@@ -10,6 +10,7 @@ const App = () => {
 				base: `'nav' 'main'`,
 				lg: `'nav nav' 'aside main'`,
 			}}
+			gridTemplateColumns={"180px 1fr"}
 		>
 			<GridItem area={"nav"}>
 				<Navbar />
