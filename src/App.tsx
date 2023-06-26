@@ -22,8 +22,9 @@ const App = () => {
 				<Navbar />
 			</GridItem>
 			<Show above="lg">
-				<GridItem area={"aside"} paddingX={5}>
+				<GridItem area={"aside"} paddingX={3}>
 					<GenreList
+						selectedGenre={selectedGenre}
 						onSelectedGenre={(genre) => {
 							setSelectedGenre(genre);
 							console.log(genre.id);
