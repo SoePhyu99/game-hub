@@ -1,5 +1,6 @@
+import { useQuery } from "@tanstack/react-query";
 import { GameQuery } from "../App";
-import apiClient from "../services/api-client";
+import apiClient, { FetchData } from "../services/api-client";
 import { Platform } from "./usePlatforms";
 
 export interface Game {
@@ -20,7 +21,11 @@ const useGames = (gameQuery: GameQuery) => {
 			search: gameQuery.searchText,
 		},
 	};
-	return apiClient<Game>("/games", "games", { ...request }).get();
+	return useQuery<FetchData<Game>, Error>({
+		queryKey: ["games", gameQuery],
+		queryFn: () => apiClient<Game>("/games").get(request),
+		staleTime: 24 * 60 * 60 * 1000,
+	});
 };
 
 export default useGames;

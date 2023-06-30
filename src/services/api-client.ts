@@ -15,33 +15,17 @@ const axiosConstant = axios.create({
 
 class ApiClient<T> {
 	endpoint: string;
-	key: string;
-	axiosRequestConfig?: AxiosRequestConfig;
-	constructor(
-		endpoint: string,
-		key: string,
-		axiosRequestConfig?: AxiosRequestConfig
-	) {
+
+	constructor(endpoint: string) {
 		this.endpoint = endpoint;
-		this.key = key;
-		this.axiosRequestConfig = axiosRequestConfig;
 	}
 
-	get = () =>
-		useQuery<FetchData<T>, Error>({
-			queryKey: [this.key, this.axiosRequestConfig],
-			queryFn: () =>
-				axiosConstant
-					.get(this.endpoint, { ...this.axiosRequestConfig })
-					.then((res) => res.data),
-			staleTime: 24 * 60 * 60 * 1000, // 24h
-		});
+	get = (config: AxiosRequestConfig) =>
+		axiosConstant
+			.get<FetchData<T>>(this.endpoint, { ...config })
+			.then((res) => res.data);
 }
 
-const apiClient = <T>(
-	endpoint: string,
-	key: string,
-	axiosRequestConfig?: AxiosRequestConfig
-) => new ApiClient<T>(endpoint, key, axiosRequestConfig);
+const apiClient = <T>(endpoint: string) => new ApiClient<T>(endpoint);
 
 export default apiClient;
