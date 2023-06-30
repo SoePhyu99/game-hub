@@ -25,9 +25,16 @@ const GameGrid = ({ gameQuery }: Props) => {
 	return (
 		<InfiniteScroll
 			hasMore={!!hasNextPage}
-			next={fetchNextPage}
+			next={() => {
+				try {
+					fetchNextPage();
+				} catch (e) {
+					console.log(e);
+				}
+			}}
 			dataLength={gameCount}
 			loader={<Spinner />}
+			endMessage={<h1>ending</h1>}
 		>
 			<SimpleGrid
 				columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}

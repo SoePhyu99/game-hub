@@ -9,12 +9,17 @@ interface Props {
 }
 const GameCard = ({ game }: Props) => {
 	return (
-		<Card height={"100%"}>
+		<Card
+			height={"100%"}
+			onClick={() => console.log(game.parent_platforms)}
+		>
 			<Image src={getCropImageUrl(game.background_image)} />
 			<CardBody>
 				<HStack justifyContent="space-between">
 					<PlatformList
-						platforms={game.parent_platforms.map((p) => p.platform)}
+						platforms={
+							game.parent_platforms?.map((p) => p.platform) || []
+						}
 					/>
 					<CriticScore score={game.metacritic}></CriticScore>
 				</HStack>
