@@ -6,13 +6,13 @@ import {
 	List,
 	ListItem,
 } from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import getCropImageUrl from "../services/get-crop-image-url";
 import GenreSkeleton from "./GenreSkeleton";
 
 interface Props {
-	onSelectedGenre: (genre: Genre) => void;
-	selectedGenre: Genre | null;
+	onSelectedGenre: (genre: number | undefined) => void;
+	selectedGenre?: number;
 }
 
 const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
@@ -38,12 +38,12 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
 								whiteSpace="normal"
 								textAlign="left"
 								fontWeight={
-									genre.id === selectedGenre?.id
+									genre.id === selectedGenre
 										? "bold"
 										: "normal"
 								}
 								fontSize="lg"
-								onClick={() => onSelectedGenre(genre)}
+								onClick={() => onSelectedGenre(genre.id)}
 								variant="link"
 							>
 								{genre.name}
