@@ -1,4 +1,4 @@
-import { Button, SimpleGrid, Text } from "@chakra-ui/react";
+import { Button, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
@@ -24,12 +24,16 @@ const GameGrid = ({ gameQuery }: Props) => {
 
 	if (error) return <Text>{error.message}</Text>;
 
+	const gameCount =
+		data?.pages.reduce((total, page) => total + page.results.length, 0) ||
+		0;
+
 	return (
 		<InfiniteScroll
-			hasMore={hasNextPage || false}
+			hasMore={!!hasNextPage}
 			next={fetchNextPage}
-			dataLength={data?.pages.length || 0}
-			loader={<p>...loading</p>}
+			dataLength={gameCount}
+			loader={<Spinner />}
 		>
 			<SimpleGrid
 				columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
