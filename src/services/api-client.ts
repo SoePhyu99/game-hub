@@ -25,10 +25,8 @@ class ApiClient<T> {
 			.get<FetchData<T>>(this.endpoint, { ...config })
 			.then((res) => res.data);
 
-	get = (id: number) =>
-		axiosConstant
-			.get<FetchData<T>>(this.endpoint + `/${id}`)
-			.then((res) => res.data.results);
+	get = (id?: string | number) =>
+		axiosConstant.get<T>(this.endpoint + `/${id}`).then((res) => res.data);
 }
 
 const apiClient = <T>(endpoint: string) => new ApiClient<T>(endpoint);

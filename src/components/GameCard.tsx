@@ -4,15 +4,13 @@ import PlatformList from "./PlatformList";
 import CriticScore from "./CriticScore";
 import getCropImageUrl from "../services/get-crop-image-url";
 import Emojis from "./Emojis";
+import { Link } from "react-router-dom";
 interface Props {
 	game: Game;
 }
 const GameCard = ({ game }: Props) => {
 	return (
-		<Card
-			height={"100%"}
-			onClick={() => console.log(game.parent_platforms)}
-		>
+		<Card height={"100%"} onClick={() => console.log(game.slug)}>
 			<Image src={getCropImageUrl(game.background_image)} />
 			<CardBody>
 				<HStack justifyContent="space-between">
@@ -23,7 +21,9 @@ const GameCard = ({ game }: Props) => {
 					/>
 					<CriticScore score={game.metacritic}></CriticScore>
 				</HStack>
-				<Heading fontSize="1.3rem">{game.name}</Heading>
+				<Link to={`/games/${game.slug}`}>
+					<Heading fontSize="1.3rem">{game.name}</Heading>
+				</Link>
 				<Emojis rating={game.rating_top} />
 			</CardBody>
 		</Card>

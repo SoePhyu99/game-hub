@@ -11,7 +11,7 @@ let router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 		children: [
 			{ path: "", element: <HomePage /> },
-			{ path: "game/:id", element: <GameDetailPage /> },
+			{ path: "games/:slug", element: <GameDetailPage /> },
 		],
 	},
 ]);
