@@ -4,8 +4,12 @@ import GenreList from "../components/GenreList";
 import Headings from "../components/Headings";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
+import { useEffect } from "react";
 
 const HomePage = () => {
+	useEffect(() => {
+		document.title = "Game Hub";
+	}, []);
 	return (
 		<>
 			<Grid
