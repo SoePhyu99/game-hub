@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { ApiClient, FetchData } from "../services/api-client";
-import { Trailers } from "../entities/Trailers";
+import Trailers from "../entities/Trailers";
 
 const useTrailer = (id?: number) => {
 	const apiClient = new ApiClient<Trailers>(`/games/${id}/movies`);
