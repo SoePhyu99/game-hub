@@ -13,7 +13,7 @@ const axiosConstant = axios.create({
 	},
 });
 
-class ApiClient<T> {
+export class ApiClient<T> {
 	endpoint: string;
 
 	constructor(endpoint: string) {
@@ -28,7 +28,3 @@ class ApiClient<T> {
 	get = (id?: string | number) =>
 		axiosConstant.get<T>(this.endpoint + `/${id}`).then((res) => res.data);
 }
-
-const apiClient = <T>(endpoint: string) => new ApiClient<T>(endpoint);
-
-export default apiClient;
