@@ -1,4 +1,4 @@
-import { Game } from "../hooks/useGames";
+import { Game } from "../entities/Game";
 import { Card, CardBody, Heading, Image, HStack } from "@chakra-ui/react";
 import PlatformList from "./PlatformList";
 import CriticScore from "./CriticScore";
@@ -10,7 +10,7 @@ interface Props {
 }
 const GameCard = ({ game }: Props) => {
 	return (
-		<Card height={"100%"} onClick={() => console.log(game.slug)}>
+		<Card height={"100%"}>
 			<Image src={getCropImageUrl(game.background_image)} />
 			<CardBody>
 				<HStack justifyContent="space-between">

@@ -1,4 +1,4 @@
-import { Platform } from "../hooks/usePlatforms";
+import { Platform } from "../entities/Platform";
 import { HStack, Icon } from "@chakra-ui/react";
 import { FaXbox, FaLinux, FaPlaystation, FaGlobe } from "react-icons/fa";
 import { AiFillAndroid, AiFillWindows, AiFillApple } from "react-icons/ai";
