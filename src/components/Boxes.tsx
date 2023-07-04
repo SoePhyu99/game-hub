@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react";
+import { transform } from "framer-motion";
 import { ReactNode } from "react";
 
 interface Props {
@@ -7,7 +8,15 @@ interface Props {
 
 const Boxes = ({ children }: Props) => {
 	return (
-		<Box borderRadius={10} overflow="hidden" width="100%">
+		<Box
+			_hover={{
+				transform: "scale(1.05)",
+				transition: "transform ease-in 0.5s",
+			}}
+			borderRadius={10}
+			overflow="hidden"
+			width="100%"
+		>
 			{children}
 		</Box>
 	);
